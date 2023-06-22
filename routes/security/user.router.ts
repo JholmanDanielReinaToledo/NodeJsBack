@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { UserController } from "../../controller/security/user.entity"; 
+import { UserController } from "../../controller/security/user.controller"; 
 
 const {crearUser , obtenerUsers} = new UserController();
 

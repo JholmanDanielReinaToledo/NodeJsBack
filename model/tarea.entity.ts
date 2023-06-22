@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, ManyToOne } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, ManyToOne, JoinColumn } from 'typeorm';
 import { User } from './security/user.entity';
 
 @Entity()
@@ -18,6 +18,6 @@ export class Tarea {
   @Column()
   descripcion: string;
 
-  @ManyToOne(() => User, user => user.tareas)
+  @ManyToOne(() => User, (user) => user.tareas, { nullable: false })
   user: User;
 }

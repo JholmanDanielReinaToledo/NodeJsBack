@@ -6,7 +6,11 @@ export class TareaController {
   public obtenerTareas = async (req: Request, res: Response) => {
     try {
       const repository = dataSource.getRepository(Tarea);
-      const datos = await repository.find();
+      const datos = await repository.find({
+        relations: {
+            user: true,
+        },
+      });
       res.json(datos);
     } catch (error) {
       res.status(500).json({ error: 'Error al obtener las tareas' });
