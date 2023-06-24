@@ -9,11 +9,14 @@ export class User {
   @Column()
   name: string;
 
-  @Column()
+  @Column({ unique: true, nullable: false })
   email: string;
 
-  @Column()
+  @Column({ nullable: false })
   password: string;
+
+  @Column({ nullable: false })
+  saltPassword: string;
 
   @Column({ nullable: true })
   avatar: string;
