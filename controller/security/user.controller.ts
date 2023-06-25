@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import dataSource from "../../config/database";
 import { User } from "../../model/security/user.entity";
 import { genSaltSync, hashSync } from "bcrypt";
-import { isEmpty, omit } from "lodash";
+import { omit } from "lodash";
 
 const saltRounds = 10;
 export class UserController {
@@ -46,29 +46,4 @@ export class UserController {
     }
   };
 
-  public login = async (req: Request, res: Response) => {
-    const { email, password } = req.body;
-
-    if (!email || !password) {
-      return res.status(400).json({ error: 'No se envio el email o la contraseña'});
-    }
-    
-    try {
-      const repository = dataSource.getRepository(User);
-
-      const user = await repository.findBy({
-        email, 
-      });
-
-      if (isEmpty(user)) {
-        return res.status(400).json({ error: 'Usuario no encontrado' })
-      }
-
-      console.log(user);
-
-      return  res.status(200).send();
-    } catch (error) {
-      res.status(500).json({ error: '' })
-    }
-  }
 }
