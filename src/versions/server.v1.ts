@@ -1,10 +1,10 @@
 import { Router } from "express";
-import TareaRouter from '../../routes/tarea.router';
+import TaskRouter from '../../routes/task.router';
 import SecurityRouter from '../../routes/security/index.router';
 
 const router = Router();
 
-router.use('/tarea', TareaRouter);
+router.use('/task', TaskRouter);
 
 // security
 router.use('/security', SecurityRouter);

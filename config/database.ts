@@ -1,5 +1,5 @@
 import { DataSource, DataSourceOptions } from 'typeorm';
-import { Tarea } from '../model/tarea.entity';
+import { Task } from '../model/task.entity';
 import { User } from '../model/security/user.entity';
 
 const dataSource: DataSource  = new DataSource({
@@ -13,7 +13,7 @@ const dataSource: DataSource  = new DataSource({
   logging: true, // Habilitar registros de consulta en la consola
   entities: [
     // Importa aquí tus entidades de TypeORM
-    Tarea,
+    Task,
     User,
   ],
   migrations: [

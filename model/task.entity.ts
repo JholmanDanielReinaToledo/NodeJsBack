@@ -2,7 +2,7 @@ import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, ManyToOne, Jo
 import { User } from './security/user.entity';
 
 @Entity()
-export class Tarea {
+export class Task {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -18,6 +18,6 @@ export class Tarea {
   @Column()
   descripcion: string;
 
-  @ManyToOne(() => User, (user) => user.tareas, { nullable: false })
+  @ManyToOne(() => User, (user) => user.tasks, { nullable: false })
   user: User;
 }
