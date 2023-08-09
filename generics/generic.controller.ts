@@ -41,10 +41,12 @@ class GenericController<T extends GenericModel> {
   }
 
   async getAll(req: Request, res: Response) {
+    console.log(this.repository);
     try {
-      const data = await this.repository.find(this.optionsSelect);
+      const data = await this.repository.find();
       return res.json(data);
     } catch (error) {
+      console.log(error);
       return res.status(500).json({ error: 'Error al obtener las Users' });
     }
   }
