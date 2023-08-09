@@ -1,11 +1,9 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, OneToMany } from 'typeorm';
 import { Task } from '../task.entity';
+import GenericModel from '../../generics/generic.model';
 
 @Entity()
-export class User {
-  @PrimaryGeneratedColumn()
-  id: number;
-
+export class User extends GenericModel{
   @Column()
   name: string;
 
@@ -26,4 +24,4 @@ export class User {
 
   @OneToMany(() => Task, task => task.user)
   tasks: Task[];
-}
+};
